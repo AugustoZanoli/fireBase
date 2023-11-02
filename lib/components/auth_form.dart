@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:chat/components/user_image_picker.dart';
 import 'package:chat/core/models/auth_form_data.dart';
+import 'package:chat/core/models/chat_user.dart';
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
@@ -40,6 +41,13 @@ class _AuthFormState extends State<AuthForm> {
     if (_formData.image == null && _formData.isSignup) {
       return _showError('Imagem não selecionada!');
     }
+
+    final userData = ChatUser(
+      id: '1',
+      name: _formData.name,
+      email: _formData.email,
+      imageURL: '1',
+    );
 
     widget.onSubmit(_formData);
   }
