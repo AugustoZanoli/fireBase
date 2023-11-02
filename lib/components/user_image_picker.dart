@@ -49,9 +49,7 @@ class _UserImagePickerState extends State<UserImagePicker> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Icon(
-                Icons.image,
-              ),
+              Icon(Icons.image_search),
               SizedBox(width: 10),
               Text('Adicionar Imagem'),
             ],

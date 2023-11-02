@@ -53,8 +53,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-  # assets:
-  #   - assets/fundologin.png
+  assets:
+    - assets/images/avatar.png
 
   #   - images/a_dot_ham.jpeg
 
