@@ -77,7 +77,7 @@ class _ToDoFormState extends State<ToDoForm> {
                   ),
                   TextButton(
                     style: TextButton.styleFrom(
-                      primary: Colors.red, // Use red color
+                      primary: Colors.grey.shade900, // Use red color
                     ),
                     onPressed: _showDatePicker,
                     child: Text(
@@ -96,8 +96,8 @@ class _ToDoFormState extends State<ToDoForm> {
                 ElevatedButton(
                   child: Text('Novo afazer'),
                   style: ElevatedButton.styleFrom(
-                    primary:
-                        Colors.red, // Use red color for the button background
+                    primary: Colors.grey
+                        .shade900, // Use red color for the button background
                     onPrimary: Colors.white, // Use white color for the text
                   ),
                   onPressed: _submitForm,

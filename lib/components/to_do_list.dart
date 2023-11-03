@@ -14,8 +14,9 @@ class ToDoList extends StatelessWidget {
       height: 600,
       child: afazeres.isEmpty
           ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 20),
+                SizedBox(height: 0),
                 Text(
                   'Nenhum afazer registrado!',
                   style: Theme.of(context).textTheme.subtitle1,

@@ -15,6 +15,7 @@ class _AuthPageState extends State<AuthPage> {
 
   Future<void> _handleSubmit(AuthFormData formData) async {
     try {
+      if (!mounted) return;
       setState(() => _isLoading = true);
       if (formData.isLogin) {
         //Login
@@ -41,7 +42,7 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Colors.grey.shade900,
       body: Stack(
         children: [
           Center(

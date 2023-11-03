@@ -7,7 +7,7 @@ class LoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Colors.grey.shade900,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

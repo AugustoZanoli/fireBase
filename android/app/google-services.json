@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "990976369536",
+    "project_id": "todoapp-63b1a",
+    "storage_bucket": "todoapp-63b1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990976369536:android:31861950b8216a067f5765",
+        "android_client_info": {
+          "package_name": "br.com.zanoli.todo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY_-fu9fneLEZ-IoA922QBnFZSXQYh6-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
