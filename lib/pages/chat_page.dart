@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:chat/pages/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -14,6 +14,7 @@ class DoPage extends StatefulWidget {
 
 class _DoPageState extends State<DoPage> {
   List<ToDo> _ToDos = [];
+  List<ToDo> _allToDos = [];
 
   List<ToDo> get _recentToDos {
     return _ToDos.where((tr) {
@@ -51,6 +52,16 @@ class _DoPageState extends State<DoPage> {
       category: category,
     );
 
+    // Crie uma referência à coleção "tasks" no Firestore
+    final tasksCollection = FirebaseFirestore.instance.collection('tasks');
+
+    // Adicione a nova tarefa ao Firestore
+    tasksCollection.add({
+      'name': newToDo.name,
+      'date': newToDo.date,
+      'category': newToDo.category,
+    });
+
     setState(() {
       _ToDos.add(newToDo);
     });
@@ -76,13 +87,22 @@ class _DoPageState extends State<DoPage> {
   }
 
   void _handleSearch(String query) {
-    final TextEditingController _searchController = TextEditingController();
-    // Use o valor do controlador para realizar a pesquisa.
-    final searchResults = searchToDosByName(_ToDos, _searchController.text);
-    // Atualize o estado do widget com os resultados da pesquisa.
-    setState(() {
-      _ToDos = searchResults;
-    });
+    if (query.isNotEmpty) {
+      final searchResults = searchToDosByName(_allToDos, query);
+      setState(() {
+        _ToDos = searchResults;
+      });
+    } else {
+      setState(() {
+        _ToDos = _allToDos; // Restaure a lista original de tarefas
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _allToDos = _ToDos; // Inicialize _allToDos com a lista original
   }
 
   @override
@@ -92,7 +112,7 @@ class _DoPageState extends State<DoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.purple.shade500,
         title: Text('Minha Lista de Afazeres'),
         titleTextStyle: TextStyle(
           color: Colors.white,
@@ -126,7 +146,7 @@ class _DoPageState extends State<DoPage> {
                       children: [
                         Icon(
                           Icons.exit_to_app,
-                          color: Colors.black,
+                          color: Colors.purple.shade300,
                         ),
                         SizedBox(
                           width: 10,
@@ -151,7 +171,7 @@ class _DoPageState extends State<DoPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Card(
-              color: Colors.black,
+              color: Colors.purple.shade300,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -163,8 +183,8 @@ class _DoPageState extends State<DoPage> {
                         // Aqui você pode exibir a imagem do usuário (se disponível)
                         if (currentUser != null && currentUser.imageURL != null)
                           CircleAvatar(
-                            backgroundImage:
-                                FileImage(File(currentUser.imageURL)),
+                            backgroundImage: NetworkImage(currentUser
+                                .imageURL), // Carregue a imagem a partir da URL
                             radius:
                                 25, // Ajuste o tamanho do avatar conforme necessário
                           ),
