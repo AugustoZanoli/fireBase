@@ -112,7 +112,7 @@ class _DoPageState extends State<DoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple.shade500,
+        backgroundColor: Colors.grey.shade900,
         title: Text('Minha Lista de Afazeres'),
         titleTextStyle: TextStyle(
           color: Colors.white,
@@ -146,7 +146,7 @@ class _DoPageState extends State<DoPage> {
                       children: [
                         Icon(
                           Icons.exit_to_app,
-                          color: Colors.purple.shade300,
+                          color: Colors.grey.shade900,
                         ),
                         SizedBox(
                           width: 10,
@@ -171,7 +171,7 @@ class _DoPageState extends State<DoPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Card(
-              color: Colors.purple.shade300,
+              color: Colors.grey.shade900,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -226,6 +226,7 @@ class _DoPageState extends State<DoPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.grey.shade300,
         child: Icon(Icons.add),
         onPressed: () => _openToDoFormModal(context),
       ),
