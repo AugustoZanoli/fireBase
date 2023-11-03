@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'chat_page.dart';
 
 class SearchScreen extends StatelessWidget {
   final void Function(String) onSearch;
